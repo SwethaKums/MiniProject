@@ -1,0 +1,65 @@
+﻿@model AirLinesAp.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+<style>
+    .Air {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+
+    img {
+        height: 100%;
+        width: 100%
+    }
+
+    .right {
+        width: 120%;
+        padding: 10%;
+        background: linear-gradient(white,turquoise);
+        top: 100%
+    }
+</style>
+
+    <div class="Air">
+
+       <div class="left">
+           <img src="/images/Fly.jpg" class="left-img"/>
+    </div>
+
+
+    <div class="right">
+        <div class="right-tab">
+            <h2>Login</h2>
+            
+                  <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                     <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PassWord" class="control-label"></label>
+                    <input asp-for="PassWord" type="password" class="form-control" />
+                    <span asp-validation-for="PassWord" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <a asp-action="BookingPage" asp-controller="User"><input type="submit" value="Login" class="btn btn-primary" /></a>
+                </div>
+                </form>
+            
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

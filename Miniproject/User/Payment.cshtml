@@ -1,0 +1,101 @@
+﻿@model AirLinesAp.Models.Payment
+
+@{
+    ViewData["Title"] = "Payment";
+    Layout = "_Layout";
+}
+<style>
+    .Air {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+
+    }
+
+    img {
+        height: 100%;
+        width: 2000%
+    }
+
+    .right {
+
+        width: 140%;
+        padding: 10%;
+        background: linear-gradient(white,mediumturquoise);
+        top:100%
+    }
+
+
+</style>
+
+
+<div class="Air">
+
+    <div class="left">
+
+        <img src="/images/Fly.jpg" class="left-img" />
+    </div>
+
+
+    <div class="right">
+        <div class="right-tab">
+            <h1>Payment</h1>
+        <form asp-action="Payment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+           
+           
+            <div class="form-group">
+                <label asp-for="CardNumber" class="control-label"></label>
+                <input asp-for="CardNumber" class="form-control" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpiryDate" class="control-label"></label>
+                <input asp-for="ExpiryDate" type="date" class="form-control" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cvv" class="control-label">CVV</label>
+                <input asp-for="Cvv" type="password" class="form-control" />
+                <span asp-validation-for="Cvv" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" onclick="myFunction1()" value="PayNow" class="btn btn-primary"  asp-action="Logout" asp-controller="user" />
+            
+          
+            
+                
+                    <input type="submit" onclick="myFunction2()" value="Cancel" class="btn btn-primary" asp-action="BookingPage" asp-controller="user" />
+                  
+
+                </div>
+                <div>
+                    <script>
+                        
+                        function myFunction1() {
+                            alert("payment Successfull!!!!");
+                        }
+                    </script>
+                </div>
+                <div>
+                    <script>
+
+                        function myFunction2() {
+                            alert("You have cancalled the payment,go to the Search page");
+                        }
+                    </script>
+                </div>
+
+        </form>
+          
+    </div>
+</div>
+
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

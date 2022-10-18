@@ -1,0 +1,81 @@
+﻿@model List<AirLinesAp.Models.FlightInformation>
+
+@{
+    ViewData["Title"] = "FlightInformation";
+}
+<style>
+    .Air {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+
+    
+
+    .right {
+        width: 140%;
+        height:400%;
+        padding: 10%;
+        background: linear-gradient(white,mediumturquoise);
+        top: 100%
+    }
+</style>
+<div class="Air">
+    
+
+    <div class="right">
+       
+        <div class="right-tab">
+                    <form>
+                        <div class="form-action">
+            <h2>Flight Details</h2>
+<table class="table">
+    <thead>
+    <tr>
+    <th>FlightNames</th>
+    <th>Avail Seats</th>
+    <th>Amount</th>
+    <th>TravelDate</th>
+   
+
+    
+    </tr>
+    </thead>
+   <tbody>
+       @foreach( var item in Model){
+           <tr>
+               <td>@item.FlightName</td>
+                <td>@item.NoOfseats</td>
+                <td>@item.Amount</td>
+                <td>@item.TravelDate<style type="date"></style></td>
+                 <td><a asp-controller="User" asp-action="Payment"><input style="color:white ;Background:dodgerblue;box-shadow:none;border-color:dodgerblue" type="button" value="Book"></a> </td>
+
+           </tr>
+       }
+   </tbody>
+               
+</table>
+                        </div>
+                </form>
+<div>
+    @if (ViewBag.message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+        }
+        </div>
+
+    </div>
+   
+</div>
+</div>
+</div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

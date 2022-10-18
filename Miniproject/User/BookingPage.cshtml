@@ -1,0 +1,98 @@
+﻿@model IEnumerable<AirLinesAp.Models.BookingPage>
+
+@{
+    ViewData["Title"] = "Search Flights";
+}
+<style>
+    .Air {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+    }
+
+    img {
+        height: 100%;
+        width: 100%
+    }
+
+    .right {
+        width: 120%;
+        padding: 10%;
+
+        background: linear-gradient(white,turquoise);
+        top: 100%
+    }
+</style>
+    <div class="Air">
+
+      <div class="left">
+         <img src="/images/Fly.jpg" class="left-img"/>
+         </div>
+
+   <div class="right">
+       <div class="right-tab">
+            <h1>Search Flight</h1>
+    <form method="get" action="BookingPage">
+        <div >
+            <div class="form-group" >
+                <label class="control-label">Departure</label>
+                <select name="Departure" class="form-control">
+
+                    @foreach (var item in ViewBag.DepartureList)
+                    {
+                        <option value="@item.CityId">@item.CityName </option>
+                    }
+                </select>
+            </div>
+            <br />
+
+
+            <div class="form-group" >
+                <label class="control-label">Arrival</label>
+                <select name="Arrival" class="form-control">
+
+                    @foreach (var item in ViewBag.ArrivalList)
+                    {
+                        <option value="@item.CityId">@item.CityName </option>
+                    }
+                </select>
+            </div>
+            <br />
+
+           @* <div class="form-group" >
+                <label class="control-label">Travel Date</label>
+                <input name="TravelDate" type="date" class="form-control" />
+                <span  class="text-danger"></span>
+            </div>
+            <br />*@
+
+
+            <div class="form-group" >
+                <label  class="control-label">Timing</label>
+                <select name="starttime" class="form-control">
+
+                    @foreach (var item in ViewBag.timelist)
+                    {
+                    <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <br />
+            <div class="form-button">
+                <input  type="submit" value="search" class="btn btn-primary" />
+            </div>
+
+
+        </div>
+        
+    </form>
+        </div>
+   
+    
+    
+
+
+</div>
+</div>
+
